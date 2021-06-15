@@ -62,12 +62,13 @@ const SignInForm = (props) => {
         alignItems: 'center',
         marginTop: "5%",
         backgroundColor: 'transparent',
+        height: '100%'
     }
 
     return (
         <div className="limiter" style={flexContainer}>
-            <div className="container-login100">
-                <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+            <div className="container-login100" >
+                <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style={{boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
                     <form className="login100-form validate-form" onSubmit={onFormSubmit}>
 					<span className="login100-form-title p-b-49">
 						Login

@@ -2,11 +2,22 @@ import React from 'react';
 import styles from '../sevi/public/assets/css/theme.css';
 import styleRtl from '../sevi/public/assets/css/theme-rtl.css';
 import logo from '../sevi/public/assets/img/gallery/logo.png';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import { storage } from "services";
 import {useSelector} from "react-redux";
 
 const Navbar = (props) => {
     const auth = useSelector(state => state.auth);
+
+    const history = useHistory();
+
+    const handleLogout = () => {
+        storage.remove('user');
+        storage.remove('token');
+        history.push('/');
+        window.location.reload();
+    }
+
     return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top py-3 backdrop"
              data-navbar-on-scroll="data-navbar-on-scroll">
@@ -39,6 +50,12 @@ const Navbar = (props) => {
                             </button>
                         </Link>
                     </form>
+
+                    {auth?.isAuthenticated ?
+                        <button onClick={handleLogout} style={{marginLeft: '10px'}} className="btn btn-lg btn-primary rounded-pill bg-gradient font-base order-0" type="submit">
+                            Log Out
+                        </button> : ''}
+
                 </div>
             </div>
         </nav>
