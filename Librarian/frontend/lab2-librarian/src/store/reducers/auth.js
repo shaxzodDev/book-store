@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
                 user: action.payload.user
             };
 
-        case authActions.Logout.REQUEST:
+        case authActions.Logout.TRIGGER:
         case authActions.Logout.FAILURE:
         case authActions.Login.FAILURE:
             return {

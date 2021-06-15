@@ -36,7 +36,7 @@ const SignInForm = (props) => {
         }
 
 
-        dispatch(ActionsAuth.Login.trigger(payload));
+            dispatch(ActionsAuth.Login.trigger(payload));
 
 
         // UserRepository.signIn(username, password)

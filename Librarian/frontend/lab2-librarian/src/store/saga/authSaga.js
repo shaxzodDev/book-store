@@ -31,8 +31,8 @@ export function* LoginRequest(action) {
 
 
 export function* LogoutRequest() {
-    yield call(storage.remove, "token");
     yield call(storage.remove, "user");
+    yield call(storage.remove, "token");
 }
 
 export default function* root() {

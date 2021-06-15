@@ -72,16 +72,17 @@ const Home = (props) => {
             <div className="container">
                 <div className="row align-items-center min-vh-md-75">
                     <div className={`${styles.colMd7} ${styles.colLg6} ${styles.py6} ${styles.textSmStart} ${styles.textCenter}`}>
-                        <h1 className={`${styles.mt6} ${styles.mbSm4} ${styles.display4} ${styles.fwSemiBold} ${styles.lhSm} ${styles.fs4} ${styles.fsLg6} ${styles.fsXxl7}`}>Today's
-                            research, <br className={`${styles.dBlock} ${styles.dLgNone} ${styles.dXlBlock}`}/>tomorrow's innovation</h1>
-                        <p className={`${styles.mb4} ${styles.fs1}`}>Accelerating research discovery to shape a better future </p>
+                        <h1 className={`${styles.mt6} ${styles.mbSm4} ${styles.display4} ${styles.fwSemiBold} ${styles.lhSm} ${styles.fs4} ${styles.fsLg6} ${styles.fsXxl7}`}>
+                            Bugungi izlanish,
+                           <br className={`${styles.dBlock} ${styles.dLgNone} ${styles.dXlBlock}`}/>ertangi innovatsiya</h1>
+                        <p className={`${styles.mb4} ${styles.fs1}`}>Yaxshiroq kelajakni shakllantirish uchun izlanish jarayonini tezlashtirish</p>
                         <div className="pt-3">
                             <form onSubmit={onFormSubmit}>
                                 <div className="input-group w-xl-75 w-xxl-50 d-flex flex-end-center">
 
                                     <input className="form-control rounded-pill border-0 font-base"
                                            id="formGroupExampleInput" type="text"
-                                           placeholder="Search books, articles, keywords"
+                                           placeholder="kitoblar, maqolalar qidiring"
                                            onChange={handleChange}/><button style={{border: 'none', backgroundColor: 'transparent', display:'inline'}} type="submit"><img
                                     className="input-box-icon me-3" src={`${search}`} width ="18"
                                     alt=""/></button>

@@ -16,7 +16,7 @@ const BottomContainer = (props) => {
                                                                                    src={`${logo}`}
                                                                                    width={100}
                                                                                    alt=""/>
-                    <div className="text-primary font-base">Online Book Store</div>
+                    <div className="text-primary font-base">Onlayn vitrina</div>
                 </a></div>
                 <div className="col-auto mb-3">
                     <h6 className="mb-5 font-base fs-1">About us </h6>
