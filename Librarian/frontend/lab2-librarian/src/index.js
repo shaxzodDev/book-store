@@ -1,13 +1,30 @@
 import React from 'react';
+import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
+
+
 import ReactDOM from 'react-dom';
-import './index.css';
+import './sevi/public/assets/css/theme.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
+import { configureStore } from "./store";
+const store = configureStore();
+
+
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <Provider {...{store}}>
+        <Router>
+            <React.StrictMode>
+                <App />
+            </React.StrictMode>
+        </Router>
+    </Provider>
+ ,
   document.getElementById('root')
 );
 

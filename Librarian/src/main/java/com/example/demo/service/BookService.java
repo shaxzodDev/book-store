@@ -1,18 +1,25 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Author;
-import com.example.demo.model.Book;
-import com.example.demo.model.Category;
+import com.example.demo.dto.BookCreateAuthorDTO;
+import com.example.demo.dto.BookDTO;
+import com.example.demo.enums.Category;
 
 
 import java.util.List;
-import java.util.Optional;
 
 public interface BookService {
-    List<Book> findAll();
-    Optional<Book> findById(Long id);
+
+//    List<BookDTO> findAll();
+
+    BookDTO findById(Long id);
+
     void deleteById(Long id);
-    Optional<Book> save(String name, Category category, Long author,Integer availableCopies);
-    Optional<Book> edit(Long id, String name, Category category, Long author, Integer availableCopies);
+
+    BookDTO save(String name, Category category, Long author,Integer availableCopies);
+
+    BookDTO edit(Long id, String name, Category category, Long author, Integer availableCopies);
+
     void markAsTakenBook(Long id);
+
+    void create(BookCreateAuthorDTO dto);
 }

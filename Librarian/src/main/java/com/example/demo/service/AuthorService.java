@@ -1,15 +1,17 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Author;
-import com.example.demo.model.Book;
-import com.example.demo.model.Category;
-import com.example.demo.model.Country;
+import com.example.demo.dto.AuthorDTO;
+import com.example.demo.dto.AuthorSignUpDTO;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface AuthorService {
-    List<Author> findAll();
-    Optional<Author> findById(Long id);
+
+    List<AuthorDTO> findAll();
+
+    AuthorDTO findById(Long id);
+
     void deleteById(Long id);
+
+    void registerAuthor(AuthorSignUpDTO authorSignUpDTO);
 }

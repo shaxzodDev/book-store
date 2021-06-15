@@ -1,48 +1,35 @@
 package com.example.demo.model;
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
-public class Author {
+public class Author extends AuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-   private Long id;
-   private String name;
-   private String surname;
-   @ManyToOne
-   private Country country;
+    private Long id;
 
-    public Author( String name, String surname, Country country) {
+    @Column(name = "user_id")
+    private Long userId;
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", updatable = false, insertable = false)
+    private User user;
 
-        this.name = name;
-        this.surname = surname;
-        this.country = country;
-    }
+    @Column(name = "slogan")
+    private String slogan;
 
-    public Author() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            mappedBy = "author"
+    )
+    Set<Book> books = new HashSet<>();
 }
