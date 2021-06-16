@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import AuthorRepository from "../repo/AuthorRepository";
 import {BrowserRouter as Redirect, useHistory} from "react-router-dom";
+import CountryRepository from "../repo/CountryRepository";
 
 const AuthorForm = (props) => {
 
@@ -48,6 +49,13 @@ const AuthorForm = (props) => {
         })
     }
 
+    let [countries, setCountries] = useState({
+        categories: []
+    });
+
+    useEffect(() => CountryRepository.fetchCountries().then(r => {
+        setCountries(r.data);
+    }), []);
 
     const flexContainer = {
         display: 'flex',
@@ -164,8 +172,8 @@ const AuthorForm = (props) => {
                         <label htmlFor="name">Country</label>
 
                         <select id="countryId" name="countryId" className="form-control" onChange={handleChange}>
-                            {console.log(props.countries)}
-                            {props.countries?.data?.length > 0 && props.countries.data.map((term) =>
+                            {console.log(countries)}
+                            {countries?.data?.length > 0 && countries.data.map((term) =>
                                 <option key={term.id} value={term.id} id="countryId"
                                         name="countryId">{term.name}</option>
                             )}
