@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Redirect, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Link, Redirect, Route} from 'react-router-dom'
 import BookItems from "./BookItems";
 import BookRepository from "../repo/BookRepository";
 import BookTerm from "./BookTerm";
@@ -20,7 +20,7 @@ class Books extends React.Component {
     }
 
     loadBooks = () => {
-        BookRepository.fetchBooks()
+        BookRepository.fetchBooksTop()
             .then((data) => {
                 this.setState({
                     books: data.data
@@ -83,7 +83,7 @@ class Books extends React.Component {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-8 col-lg-6 text-center mb-7">
-                        <h1 className="fw-semi-bold text-warning">Best<span className="text-1100"> seller books</span>
+                        <h1 className="fw-semi-bold text-warning">Eng<span className="text-1100"> ko'p o'qilgan kitoblar</span>
                         </h1>
                     </div>
                     <Router>
@@ -94,10 +94,12 @@ class Books extends React.Component {
                                            onEdit={this.getBook}
                                            onMarkAsTaken={this.markAsTaken}/>}/>
                     </Router>
-                    <div className="col-lg-12 d-flex justify-content-center">
-                        <button className="btn btn-lg btn-primary rounded-pill font-base" type="submit">Find More
-                        </button>
-                    </div>
+                    <Link to={"/shelf"}>
+                        <div className="col-lg-12 d-flex justify-content-center">
+                            <button className="btn btn-lg btn-primary rounded-pill font-base" type="submit">ko'proq o'qing
+                            </button>
+                        </div>
+                    </Link>
                 </div>
             </div>
 

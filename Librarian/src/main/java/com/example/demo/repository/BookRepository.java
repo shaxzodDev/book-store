@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import com.example.demo.dto.BookDTO;
+import com.example.demo.enums.Category;
 import com.example.demo.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -23,4 +24,10 @@ public interface BookRepository extends JpaRepository<Book,Long> {
 
     @Query("select b from Book b where lower(b.name) like :name")
     List<Book> findByName(String name);
+
+    @Query("select b from Book b where b.category = :category")
+    List<Book> findByFilter(Category category);
+
+    @Query(value = "select b.* from book b order by b.reviews desc limit 10", nativeQuery = true)
+    List<Book> findTop();
 }

@@ -18,6 +18,7 @@ const AuthorProfile = lazy(() => import("./components/AuthorProfile"));
 const BookForm = lazy(() => import("./components/BookForm"));
 const Books = lazy(() => import("./components/Books"));
 const SignInForm = lazy(() => import("./components/SignInForm"));
+const ShelfComponent = lazy(() => import("./components/ShelfComponent"));
 
 
 
@@ -27,6 +28,7 @@ const routes = [
     {path: "/book_form", exact: true, component: BookForm},
     {path: "/books", exact: true, component: Books},
     {path: "/sign_in", exact: true, component: SignInForm},
+    {path: "/shelf", exact: true, component: ShelfComponent},
 ];
 
 
@@ -51,7 +53,7 @@ class App extends Component {
     }
 
     loadBooks = () => {
-        BookRepository.fetchBooks()
+        BookRepository.fetchBooksTop()
             .then((data) => {
                 this.setState({
                     books: data.data

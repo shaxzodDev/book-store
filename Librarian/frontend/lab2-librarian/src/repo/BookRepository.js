@@ -2,8 +2,8 @@ import axios from '../custom-axios/axios';
 import storage from "../services/storage";
 
 const BookRepository = {
-    fetchBooks: () => {
-        return axios.get("/api/v1/book/list");
+    fetchBooksTop: () => {
+        return axios.get("/api/v1/book/list/top");
     },
     fetchAuthors: () => {
         return axios.get("/api/author");
@@ -12,6 +12,15 @@ const BookRepository = {
     fetchBookByName: (name) => {
         console.log(name);
         return axios.get("/api/v1/book/list", {params: {name: name}});
+    },
+
+    fetchByCategory: (category) => {
+        console.log(category);
+        return axios.get("/api/v1/book/list", {params: {category: category}});
+    },
+
+    incrementReview: (id) => {
+        return axios.post("/api/v1/book/increment_review/" + id);
     },
 
     createBook: (name, category, availableCopies, authorId, description, price, pdfFile, image) => {

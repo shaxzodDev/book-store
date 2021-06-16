@@ -42,17 +42,43 @@ public class BookController {
     private final BookConverter bookConverter;
 
     @GetMapping("/book/list")
-    public ResponseEntity<ResponseData<List<BookDTO>>> findAll(@RequestParam(required = false) String name) {
+    public ResponseEntity<ResponseData<List<BookDTO>>> findAll(@RequestParam(required = false) String name, @RequestParam(required = false) Category category) {
         if (StringUtils.isNotBlank(name)) {
             return ResponseEntity.ok(new ResponseData<>(bookRepository.findByName("%" + name.toLowerCase() + "%")
                     .stream()
                     .map(bookConverter::toBookDTO)
                     .collect(Collectors.toList())));
         }
+
+        if (category != null) {
+            return ResponseEntity.ok(new ResponseData<>(bookRepository.findByFilter(category)
+                    .stream()
+                    .map(bookConverter::toBookDTO)
+                    .collect(Collectors.toList())));
+        }
+
         return ResponseEntity.ok(new ResponseData<>(bookRepository.findAll()
                 .stream()
                 .map(bookConverter::toBookDTO)
                 .collect(Collectors.toList())));
+    }
+
+    @GetMapping("/book/list/top")
+    public ResponseEntity<ResponseData<List<BookDTO>>> findAllTop() {
+        return ResponseEntity.ok(new ResponseData<>(bookRepository.findTop()
+                .stream()
+                .map(bookConverter::toBookDTO)
+                .collect(Collectors.toList())));
+    }
+
+    @PostMapping("/book/increment_review/id")
+    public ResponseEntity<?> increment(@PathVariable Long id) {
+        bookRepository.findById(id).ifPresent(b -> {
+            b.setReviews(b.getReviews() + 1);
+            bookRepository.save(b);
+        });
+
+        return ResponseEntity.ok("sucess");
     }
 
     @PostMapping("/book")

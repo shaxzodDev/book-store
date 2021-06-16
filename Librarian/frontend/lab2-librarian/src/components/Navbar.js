@@ -32,7 +32,7 @@ const Navbar = (props) => {
                         aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
                 <div className="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
-                        <Link className="nav-item nav-link fw-medium active" to="/">Asosiy</Link>
+                        <Link className="nav-item nav-link fw-medium" to="/">Asosiy</Link>
                         <Link className="nav-item nav-link" to={"/books"}>Kitoblar</Link>
                         <Link className="nav-item nav-link" to={"/posts"}>Postlar</Link>
                         <li className="nav-item dropdown"><a className="nav-link dropdown-toggle" id="navbarDropdown" href="#"
