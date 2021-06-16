@@ -141,6 +141,8 @@ public class BookController {
                 if (key.equals(book.get().getPdfUrlUUid())) {
                     String filePath = book.get().getPdfUrl();
                     try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
+                        book.get().setReviews(book.get().getReviews() != null ? book.get().getReviews() + 1 : 1);
+                        bookRepository.save(book.get());
                         return ResponseEntity.ok(IOUtils.toByteArray(fileInputStream));
                     } catch (IOException e) {
                         log.error(e.getMessage(), e);

@@ -95,23 +95,8 @@ const ShelfComponent = (props) => {
                                             <div className="item-details">
                                                 <h3 className="book-item_title">{book.name}</h3>
                                                 <p className="author">{book?.authorName} &bull; {book?.publishedDate}</p>
-                                                <p>{book.description}</p>
-                                                <button className="button" style={{color: 'white'}} value = {book.id} onClick={handleReview}><a href={book.pdfUrl}>Read</a></button>
-                                            </div>
-                                            <div className="overlay-details">
-                                                <a href="#" className="close-overlay-btn">Close</a>
-                                                <div className="overlay-image">
-                                                    <img
-                                                        src="http://interactivejoe.com/book-viewer/assets/images/bk_1-large.jpg"
-                                                        alt="Book Cover"/>
-                                                </div>
-                                                <div className="overlay-desc activated">
-                                                    <h2 className="overlay_title">{book.name}</h2>
-                                                    <p className="author">{book?.author?.name}</p>
-                                                    {/*<p className="published">1937</p>*/}
-                                                    <p className="synopsis">{book.description}</p>
-                                                    <a href="#" className="button preview">Preview</a>
-                                                </div>
+                                                <p>{book.description} <br/><br/> Reviews: {book.reviews}</p>
+                                                <button className="button" style={{color: 'white'}}><a href={book.pdfUrl}>Read</a></button>
                                             </div>
                                         </li>
                                     </ul>

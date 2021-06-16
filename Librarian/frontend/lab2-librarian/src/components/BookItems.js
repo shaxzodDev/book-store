@@ -71,8 +71,10 @@ class BookItems extends React.Component {
                                                         Copies: {book.availableCopies}</li>
                                                 </ul>
                                                 <ul>
-
                                                     <li className="fw-semi-bold">Uploaded By: {book.authorName}</li>
+                                                </ul>
+                                                <ul>
+                                                    <li className="fw-semi-bold">Reviews: {book.reviews}</li>
                                                 </ul>
                                                 <p>{book.description}
                                                     <a href={book.pdfUrl}><button type="button"
