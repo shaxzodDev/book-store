@@ -5,8 +5,13 @@ import avatar from '../sevi/public/assets/img/gallery/avatar.png';
 import {Link, useLocation} from "react-router-dom";
 import {useSelector} from "react-redux";
 import get from 'lodash/get';
+import BookRepository from "../repo/BookRepository";
+import PostRepository from "../repo/PostRepository";
+import {useHistory} from 'react-router-dom';
+
 const AuthorProfile = (props) => {
 
+    const history = useHistory();
 
     ///abetga chiqib keyapman ok, man buni qilib turaman, profile danniylarni authdan olib ok? keyin profile ga otishini kechaklab qoyamiz kechaklab? rahmat
     const location = useLocation();
@@ -18,6 +23,32 @@ const AuthorProfile = (props) => {
         alignItems: 'center',
         marginTop: "2%",
         backgroundColor: 'transparent',
+    }
+
+    const [formData, updateFormData] = React.useState({
+        post: ''
+    })
+
+    const handleChange = (e) => {
+        if(e.target.value?.length > 400) {
+            window.alert("Harflar 400 tadan oshmasligi kerak!")
+        } else {
+            updateFormData({
+                post: e.target.value
+            })
+        }
+    }
+
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+
+        PostRepository.createPost(formData.post)
+            .then((r) => {
+                history.push("/author/posts");
+            }).catch((err) => {
+            window.alert(err.message)
+            history.push("/author_profile");
+        });
     }
 
     return (
@@ -37,20 +68,20 @@ const AuthorProfile = (props) => {
                 </div>
                 <div className="profile-info col-md-9" style={{width: '100%'}}>
                     <div className="panel">
-                        <form style={flexContainer}>
-                            <textarea placeholder="Whats in your mind today?" rows="2"
-                                      className="form-control input-lg p-text-area" />
+                        <form style={flexContainer} onSubmit={onFormSubmit}>
+                            <textarea placeholder="Nima haqida fikr ulashmoqchisiz? (400 ta harf)" rows="2"
+                                      className="form-control input-lg p-text-area" onChange={handleChange}/>
 
-                            <div>
+                            <div style={{width: '10%'}}>
                                 <button className="btn btn-lg rounded-pill btn-primary bg-gradient font-base order-0"
-                                        type="submit">Post
+                                        type="submit">Yuklang
                                 </button>
                             </div>
                         </form>
                         <div style={flexContainer}>
                             <Link to={"/book_form"}>
                                 <button className="btn btn-lg rounded-pill btn-primary bg-gradient font-base order-0"
-                                        type="submit" >Share your book on the Platform
+                                        type="submit" >Kitoblaringizni ulashing
                                 </button>
                             </Link>
                         </div>
@@ -75,17 +106,17 @@ const AuthorProfile = (props) => {
                     <div className="panel" style={{borderRadius: '0!important'}}>
                         <div  className="font-base bio-graph-heading">
                             <p style={{color: "white"}}>
-                                {get(auth, "user.slogan")}
+                                Shior: {get(auth, "user.slogan")}
                             </p>
                         </div>
                         <div className="panel-body bio-graph-info " style={{padding: "1%"}}>
-                            <h1>Bio Graph</h1>
+                            <h1>Biografiya</h1>
                             <div className="row">
                                 <div className="bio-row">
-                                    <p><span>First Name </span> {get(auth, "user.firstName")}</p>
+                                    <p><span>Ism </span> {get(auth, "user.firstName")}</p>
                                 </div>
                                 <div className="bio-row">
-                                    <p><span>Last Name </span> {get(auth, "user.lastName")}</p>
+                                    <p><span>Familiya </span> {get(auth, "user.lastName")}</p>
                                 </div>
                                 {/*<div className="bio-row">*/}
                                 {/*    <p><span>Country </span> Australia</p>*/}
@@ -94,16 +125,26 @@ const AuthorProfile = (props) => {
                                 {/*    <p><span>Birthday</span> 13 July 1983</p>*/}
                                 {/*</div>*/}
                                 <div className="bio-row">
-                                    <p><span>Occupation </span> Author</p>
+                                    <p><span>Kasbi </span> Author</p>
                                 </div>
                                 <div className="bio-row">
-                                    <p><span>Email </span> {get(auth, "user.email")}</p>
+                                    <p><span>Elektron pochta manzili </span> {get(auth, "user.email")}</p>
                                 </div>
+                                <div className="bio-row">
+                                    <p><span>Manzil </span> {get(auth, "user.address.address")}</p>
+                                </div>
+                                <div className="bio-row">
+                                    <p><span>Shahar </span> {get(auth, "user.address.city")}</p>
+                                </div>
+                                <div className="bio-row">
+                                    <p><span>Foydalanuvchi nomi </span> {get(auth, "user.username")}</p>
+                                </div>
+
                                 {/*<div className="bio-row">*/}
                                 {/*    <p><span>Mobile </span> (12) 03 4567890</p>*/}
                                 {/*</div>*/}
                                 <div className="bio-row">
-                                    <p><span>Phone </span> {get(auth, "user.phoneNumber")}</p>
+                                    <p><span>Telefon raqami </span> {get(auth, "user.phoneNumber")}</p>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +164,7 @@ const AuthorProfile = (props) => {
                                             {/*</div>*/}
                                         </div>
                                         <div className="bio-desk">
-                                            <h4 className="red">We are together since</h4>
+                                            <h4 className="red">Biz bilan hamkorlikda</h4>
                                             <p>{get(auth, "user.createdDate")}</p>
                                         </div>
                                     </div>

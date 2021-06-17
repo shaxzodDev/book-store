@@ -8,6 +8,9 @@ import {useSelector} from "react-redux";
 import Actions from "store/actions";
 import {useDispatch} from "react-redux";
 import ActionsAuth from "../store/actions";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import ScrollTop from "../services/ScrollTop";
+import ShelfComponent from "./ShelfComponent";
 
 const Navbar = (props) => {
     const auth = useSelector(state => state.auth);
@@ -35,26 +38,31 @@ const Navbar = (props) => {
                         <Link className="nav-item nav-link fw-medium" to="/">Asosiy</Link>
                         <Link className="nav-item nav-link" to={"/books"}>Kitoblar</Link>
                         <Link className="nav-item nav-link" to={"/posts"}>Postlar</Link>
-                        <li className="nav-item dropdown"><a className="nav-link dropdown-toggle" id="navbarDropdown" href="#"
-                                                             role="button" data-bs-toggle="dropdown"
-                                                             aria-expanded="false">Yana</a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action </a></li>
-                            </ul>
-                        </li>
+                        {auth?.isAuthenticated ?
+                        <Link className="nav-item nav-link" to={"/author/shelf"}>Mening Kitoblarim</Link>
+                            : ''}
+                        {auth?.isAuthenticated ?
+                            <Link className="nav-item nav-link" to={"/author/posts"}>Mening Postlarim</Link>
+                            : ''}
+
+                        {/*<Route*/}
+                        {/*    key={2}*/}
+                        {/*    path={'/author/posts'}*/}
+                        {/*    component={ScrollTop(({authorId: auth?.user?.authorId})}*/}
+                        {/*    exact*/}
+                        {/*/>*/}
                     </ul>
                     <form className="ps-lg-5">
                         <Link to={auth?.isAuthenticated ? "/author_profile" : '/sign_in'}>
                             <button className="btn btn-lg btn-primary rounded-pill bg-gradient font-base order-0"
-                                    type="submit">
+                                    type="submit" style={{margin: '0'}}>
                                 {auth?.isAuthenticated ? 'Profil' : 'Kirish'}
                             </button>
                         </Link>
                     </form>
 
                     {auth?.isAuthenticated ?
-                        <button onClick={handleLogout} style={{marginLeft: '10px'}} className="btn btn-lg btn-primary rounded-pill bg-gradient font-base order-0" type="submit">
+                        <button onClick={handleLogout} className="btn btn-lg btn-primary rounded-pill bg-gradient font-base order-0" type="submit">
                             Chiqish
                         </button> : ''}
 

@@ -14,9 +14,14 @@ const BookRepository = {
         return axios.get("/api/v1/book/list", {params: {name: name}});
     },
 
-    fetchByCategory: (category) => {
+    fetchByCategory: (category, userId) => {
+        console.log(category, userId);
+        return axios.get("/api/v1/book/list", {params: {category: category, userId: userId}});
+    },
+
+    fetchByCategoryForAuthor: (category) => {
         console.log(category);
-        return axios.get("/api/v1/book/list", {params: {category: category}});
+        return axios.get("/api/v1/book/author/list", {params: {category: category}});
     },
 
     incrementReview: (id) => {

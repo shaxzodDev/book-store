@@ -19,8 +19,8 @@ const BookForm = lazy(() => import("./components/BookForm"));
 const Books = lazy(() => import("./components/Books"));
 const SignInForm = lazy(() => import("./components/SignInForm"));
 const ShelfComponent = lazy(() => import("./components/ShelfComponent"));
-
-
+const AuthorShelfComponent = lazy(() => import("./components/AuthorShelfComponent"));
+const PostsComponent = lazy(() => import("./components/PostsComponent"));
 
 const routes = [
     {path: "/", exact: true, component: Home},
@@ -29,6 +29,8 @@ const routes = [
     {path: "/books", exact: true, component: Books},
     {path: "/sign_in", exact: true, component: SignInForm},
     {path: "/shelf", exact: true, component: ShelfComponent},
+    {path: "/author/shelf", exact: true, component: AuthorShelfComponent},
+    {path: "/posts", exact: true, component: PostsComponent},
 ];
 
 
@@ -44,7 +46,6 @@ class App extends Component {
             selectedBook: {}
         }
     }
-
 
     componentDidMount() {
         this.loadBooks();

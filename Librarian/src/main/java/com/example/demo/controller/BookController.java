@@ -42,7 +42,10 @@ public class BookController {
     private final BookConverter bookConverter;
 
     @GetMapping("/book/list")
-    public ResponseEntity<ResponseData<List<BookDTO>>> findAll(@RequestParam(required = false) String name, @RequestParam(required = false) Category category) {
+    public ResponseEntity<ResponseData<List<BookDTO>>> findAll(@RequestParam(required = false) String name,
+                                                               @RequestParam(required = false) Category category,
+                                                               @RequestParam(required = false) Long userId
+    ) {
         if (StringUtils.isNotBlank(name)) {
             return ResponseEntity.ok(new ResponseData<>(bookRepository.findByName("%" + name.toLowerCase() + "%")
                     .stream()
@@ -50,8 +53,15 @@ public class BookController {
                     .collect(Collectors.toList())));
         }
 
-        if (category != null) {
-            return ResponseEntity.ok(new ResponseData<>(bookRepository.findByFilter(category)
+        if (category != null || userId != null) {
+            List<Book> books;
+            if (userId != null) {
+                books = bookRepository.findByAuthorIdAndCategory(category, userId);
+            } else {
+                books = bookRepository.findByFilter(category);
+            }
+            return ResponseEntity.ok(new ResponseData<>(
+                    books
                     .stream()
                     .map(bookConverter::toBookDTO)
                     .collect(Collectors.toList())));

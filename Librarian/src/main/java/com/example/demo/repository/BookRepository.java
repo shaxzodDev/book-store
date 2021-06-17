@@ -28,6 +28,9 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     @Query("select b from Book b where b.category = :category")
     List<Book> findByFilter(Category category);
 
+    @Query("select b from Book b where (:category is null or b.category = :category) and b.author.userId = :userId")
+    List<Book> findByAuthorIdAndCategory(Category category, Long userId);
+
     @Query(value = "select b.* from book b order by b.reviews desc limit 10", nativeQuery = true)
     List<Book> findTop();
 }

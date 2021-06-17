@@ -33,14 +33,14 @@ const ShelfComponent = (props) => {
         books: []
     })
 
-    useEffect(() => BookRepository.fetchByCategory(activeTab.activeTab).then(r => {
+    useEffect(() => BookRepository.fetchByCategory(activeTab.activeTab, null).then(r => {
         setBooks(r.data)
     }), [])
 
     const onClickTabItem = (e) => {
         console.log(books);
         setActiveTab(e.target.value);
-        setBooks(BookRepository.fetchByCategory(e.target.value).then(r => {
+        setBooks(BookRepository.fetchByCategory(e.target.value, null).then(r => {
             setBooks(r.data)
         }));
     }
@@ -64,14 +64,6 @@ const ShelfComponent = (props) => {
                                 )}
                             </div>
 
-                            {/*<div className="small-12 medium-3 columns">*/}
-                            {/*    <select className="sort-options">*/}
-                            {/*        <option value="" disabled selected>Sort by</option>*/}
-                            {/*        <option value="">Featured</option>*/}
-                            {/*        <option value="title">Alphabetical</option>*/}
-                            {/*        <option value="date-created">Published</option>*/}
-                            {/*    </select>*/}
-                            {/*</div>*/}
                         </div>
 
                         <div  style={{width: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
@@ -95,14 +87,15 @@ const ShelfComponent = (props) => {
                                             <div className="item-details">
                                                 <h3 className="book-item_title">{book.name}</h3>
                                                 <p className="author">{book?.authorName} &bull; {book?.publishedDate}</p>
-                                                <p>{book.description} <br/><br/> Reviews: {book.reviews}</p>
-                                                <button className="button" style={{color: 'white'}}><a href={book.pdfUrl}>Read</a></button>
+                                                <p>Kitob haqida: {book.description} <br/> O'qilgan: {book.reviews} marta <br/> Kateoriyasi: {categories.find(c => c.category === book.category)?.localization} </p>
+                                                <button className="button" style={{color: 'white'}}><a href={book.pdfUrl}>O'qing</a></button>
                                             </div>
+
+
                                         </li>
                                     </ul>
                                 </div>
                             ) : ""}
-
                         </div>
                     </section>
                 </div>

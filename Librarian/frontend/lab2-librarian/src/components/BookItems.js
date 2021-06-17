@@ -46,9 +46,9 @@ class BookItems extends React.Component {
                                             <div className="col-8 col-sm-4">
                                                 {fields}
                                             </div>
-                                            <div className="col-4 col-sm-2 text-end">
-                                                <h5 className="mb-0 font-base fw-bold">{book.price}$</h5>
-                                            </div>
+                                            {/*<div className="col-4 col-sm-2 text-end">*/}
+                                            {/*    <h5 className="mb-0 font-base fw-bold">{book.price}$</h5>*/}
+                                            {/*</div>*/}
                                         </div>
                                     </div>
                                 </div>
