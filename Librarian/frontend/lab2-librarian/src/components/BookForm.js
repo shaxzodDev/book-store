@@ -5,6 +5,16 @@ import BookRepository from "../repo/BookRepository";
 import FileRepository from "../repo/FileRepostiroy";
 import CategoryRepository from "../repo/CategoryRepository";
 
+
+const categoriesL = [
+    {category: 'NOVEL', localization: 'Badiiy'},
+    {category: 'HISTORY', localization: 'Tarixiy'},
+    {category: 'FANTASY', localization: 'Fantastik'},
+    {category: 'BIOGRAPHY', localization: 'Biografiya'},
+    {category: 'CLASSICS', localization: 'Klassik'},
+    {category: 'DRAMA', localization: 'Drama'},
+];
+
 const BookForm = (props) => {
 
     const history = useHistory();
@@ -76,79 +86,79 @@ const BookForm = (props) => {
             <div className="accordion" id="accordionExample" style={{width: '50%'}}>
                 <form onSubmit={onFormSubmit}>
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="name">Nomi</label>
                         <input type="text"
                                className="form-control"
                                id="name"
                                name="name"
                                required
-                               placeholder="Enter Name"
+                               placeholder="Kitob nomini kiriting"
                                onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Category</label>
+                        <label htmlFor="name">Kategoriya</label>
 
                         <select id="category" name="category" className="form-control" onChange={handleChange}>
                             {console.log(categories)}
                             {categories?.data?.length > 0 && categories.data.map((term) =>
                                 <option key={term.order} value={term.name} id="category"
-                                        name="category">{term.name}</option>
+                                        name="category">{categoriesL?.map(c => c.category === term.name ? c.localization : '')}</option>
                             )}
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Available Copies</label>
+                        <label htmlFor="name">Mavjud nusxalar</label>
                         <input type="text"
                                className="form-control"
                                id="availableCopies"
                                name="availableCopies"
                                required
-                               placeholder="Enter the number of available copies"
+                               placeholder="Mavjud nusxalar soni"
                                onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Description</label>
+                        <label htmlFor="name">Qisqacha ma'lumot</label>
                         <input type="text"
                                className="form-control"
                                id="description"
                                name="description"
                                required
-                               placeholder="Enter Description"
+                               placeholder="Kitob haqida qisqacham ma'lumot kiriting"
                                onChange={handleChange}
                         />
                     </div>
+                    {/*<div className="form-group">*/}
+                    {/*    <label htmlFor="name">Narx</label>*/}
+                    {/*    <input type="text"*/}
+                    {/*           className="form-control"*/}
+                    {/*           id="price"*/}
+                    {/*           name="price"*/}
+                    {/*           required*/}
+                    {/*           placeholder="Kitob narxini kiriting"*/}
+                    {/*           onChange={handleChange}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
                     <div className="form-group">
-                        <label htmlFor="name">Price</label>
-                        <input type="text"
-                               className="form-control"
-                               id="price"
-                               name="price"
-                               required
-                               placeholder="Enter the Price"
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="name">PDF</label>
+                        <label htmlFor="name">PDF fayl</label>
                         <input type="file"
                                className="form-control"
                                id="pdfFile"
                                name="pdfFile"
                                required
-                               placeholder="Choose the pdf file of the Book"
+                               placeholder="Kitobning PDF faylini tanlang"
                                onChange={handleChange1}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Image</label>
+                        <label htmlFor="name">Kitobning birinchi sahifasi rasmi</label>
                         <input type="file"
                                className="form-control"
                                id="image"
                                name="image"
                                required
-                               placeholder="Choose the image of the Book"
+                               placeholder="Kitobning birinchi sahifasi rasmini kiriting"
                                onChange={handleChange1}
                         />
                     </div>

@@ -70,106 +70,106 @@ const AuthorForm = (props) => {
             <div className="accordion" id="accordionExample" style={{width: '50%'}}>
                 <form onSubmit={onFormSubmit}>
                     <div className="form-group">
-                        <label htmlFor="name">First Name</label>
+                        <label htmlFor="name">Ism</label>
                         <input type="text"
                                className="form-control"
                                id="firstName"
                                name="firstName"
                                required
-                               placeholder="Enter First Name"
+                               placeholder="Ismni kiriting"
                                onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Last Name</label>
+                        <label htmlFor="name">Sharif</label>
                         <input type="text"
                                className="form-control"
                                id="lastName"
                                name="lastName"
                                required
-                               placeholder="Enter Last Name"
+                               placeholder="Sharifingizni kiriting"
                                onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Slogan (Or quote that you find impressive)</label>
+                        <label htmlFor="name">Shior (yoki o'zingiz ta'sirlanga hikmatli so'z)</label>
                         <input type="text"
                                className="form-control"
                                id="slogan"
                                name="slogan"
                                required
-                               placeholder="Enter Slogan"
+                               placeholder="Shioringizni kiriting"
                                onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Username</label>
+                        <label htmlFor="name">Foydalanuvchi nomi</label>
                         <input type="text"
                                className="form-control"
                                id="username"
                                name="username"
                                required
-                               placeholder="Enter Username"
+                               placeholder="Foydalanuvchi nomingizni kiriting"
                                onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Password</label>
+                        <label htmlFor="name">Parol</label>
                         <input type="text"
                                className="form-control"
                                id="password"
                                name="password"
                                required
-                               placeholder="Enter Password"
+                               placeholder="Parol o'ylab toping"
                                onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Email</label>
+                        <label htmlFor="name">Elektron pochtangiz</label>
                         <input type="text"
                                className="form-control"
                                id="email"
                                name="email"
                                required
-                               placeholder="Enter Email"
+                               placeholder="Elektron pochtangizni kiriting"
                                onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Phone Number</label>
+                        <label htmlFor="name">Telefon raqam</label>
                         <input type="text"
                                className="form-control"
                                id="phoneNumber"
                                name="phoneNumber"
                                required
-                               placeholder="Enter Phone Number"
+                               placeholder="Telefon raqamingizni kiriting"
                                onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Address</label>
+                        <label htmlFor="name">Manzil</label>
                         <input type="text"
                                className="form-control"
                                id="address"
                                name="address"
                                required
-                               placeholder="Enter Address"
+                               placeholder="Manzilingizni kiriting"
                                onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">City</label>
+                        <label htmlFor="name">Shahar</label>
                         <input type="text"
                                className="form-control"
                                id="city"
                                name="city"
                                required
-                               placeholder="Enter City"
+                               placeholder="Shahringizni kiriting"
                                onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Country</label>
+                        <label htmlFor="name">Mamlakat</label>
 
                         <select id="countryId" name="countryId" className="form-control" onChange={handleChange}>
                             {console.log(countries)}
@@ -180,7 +180,7 @@ const AuthorForm = (props) => {
                         </select>
                     </div>
                     <div style={flexContainer}>
-                        <button id="submit" type="submit" className="btn btn-primary">Submit</button>
+                        <button id="submit" type="submit" className="btn btn-primary">Jo'nating</button>
                     </div>
                 </form>
             </div>

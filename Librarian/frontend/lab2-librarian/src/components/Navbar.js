@@ -36,14 +36,15 @@ const Navbar = (props) => {
                 <div className="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
                         <Link className="nav-item nav-link fw-medium" to="/">Asosiy</Link>
-                        <Link className="nav-item nav-link" to={"/books"}>Kitoblar</Link>
+                        <Link className="nav-item nav-link" to={"/books"}>Eng Ko'p o'qilgan</Link>
+                        <Link className="nav-item nav-link" to={"/shelf"}>Vitrina</Link>
                         <Link className="nav-item nav-link" to={"/posts"}>Postlar</Link>
                         {auth?.isAuthenticated ?
                         <Link className="nav-item nav-link" to={"/author/shelf"}>Mening Kitoblarim</Link>
                             : ''}
-                        {auth?.isAuthenticated ?
-                            <Link className="nav-item nav-link" to={"/author/posts"}>Mening Postlarim</Link>
-                            : ''}
+                        {/*{auth?.isAuthenticated ?*/}
+                        {/*    <Link className="nav-item nav-link" to={"/author/posts"}>Mening Postlarim</Link>*/}
+                        {/*    : ''}*/}
 
                         {/*<Route*/}
                         {/*    key={2}*/}

@@ -15,6 +15,7 @@ import NamesContainer from "./NamesContainer";
 import {render} from "@testing-library/react";
 import BookItems from "./BookItems";
 import ReactSearchAutocomplete from 'react-search-autocomplete';
+import Carousel from "./Carousel";
 
 const Home = (props) => {
 
@@ -94,12 +95,12 @@ const Home = (props) => {
                 </div>
             </div>
         </section>
-            <div style={{display: 'flex',
-                // justifyContent: 'center',
-                // alignItems: 'center',
-                flexWrap: 'nowrap',
-                paddingLeft: '14%',
-                marginTop: "-7%" }}><span style={{width: '60%'}}>{formData?.search?.length > 0} <BookItems books={formData.result}/></span></div>
+            {/*<div style={{display: 'flex',*/}
+            {/*    // justifyContent: 'center',*/}
+            {/*    // alignItems: 'center',*/}
+            {/*    flexWrap: 'nowrap',*/}
+            {/*    paddingLeft: '14%',*/}
+            {/*    marginTop: "-7%" }}><span style={{width: '60%'}}>{formData?.search?.length > 0} <Carousel books={formData.result}/></span></div>*/}
             <BeginSection/>
             <Libraries/>
             <Books books={formData.books}/>

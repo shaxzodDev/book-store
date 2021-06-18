@@ -94,12 +94,12 @@ class Books extends React.Component {
                                            onEdit={this.getBook}
                                            onMarkAsTaken={this.markAsTaken}/>}/>
                     </Router>
-                    <Link to={"/shelf"}>
-                        <div className="col-lg-12 d-flex justify-content-center">
-                            <button className="btn btn-lg btn-primary rounded-pill font-base" type="submit">ko'proq o'qing
-                            </button>
-                        </div>
-                    </Link>
+                    {/*<Link to={"/shelf"}>*/}
+                    {/*    <div className="col-lg-12 d-flex justify-content-center">*/}
+                    {/*        <button className="btn btn-lg btn-primary rounded-pill font-base" type="submit">ko'proq o'qing*/}
+                    {/*        </button>*/}
+                    {/*    </div>*/}
+                    {/*</Link>*/}
                 </div>
             </div>
 

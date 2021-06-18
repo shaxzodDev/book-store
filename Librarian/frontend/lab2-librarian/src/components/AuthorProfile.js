@@ -44,7 +44,7 @@ const AuthorProfile = (props) => {
 
         PostRepository.createPost(formData.post)
             .then((r) => {
-                history.push("/author/posts");
+                history.push("/posts");
             }).catch((err) => {
             window.alert(err.message)
             history.push("/author_profile");
@@ -87,20 +87,6 @@ const AuthorProfile = (props) => {
                         </div>
                         <footer className="panel-footer" style={flexContainer}>
 
-                            <ul className="nav nav-pills">
-                                <li>
-                                    <a href="#"><i className="fa fa-map-marker"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i className="fa fa-camera"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i className=" fa fa-film"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i className="fa fa-microphone"></i></a>
-                                </li>
-                            </ul>
                         </footer>
                     </div>
                     <div className="panel" style={{borderRadius: '0!important'}}>
