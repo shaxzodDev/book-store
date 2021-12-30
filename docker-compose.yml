@@ -6,6 +6,8 @@ services:
     build:
       context: .
     container_name: backend
+    ports:
+      - "9595:9595"
     depends_on:
       - db
     environment:
