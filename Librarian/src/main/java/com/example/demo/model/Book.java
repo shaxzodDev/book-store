@@ -16,7 +16,7 @@ import java.util.UUID;
 @Table(name = "book")
 public class Book extends AuditingEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")

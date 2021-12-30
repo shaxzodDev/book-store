@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Table(name = "post")
 public class Post extends AuditingEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

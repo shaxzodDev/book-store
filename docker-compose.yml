@@ -17,12 +17,16 @@ services:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
   db:
-    image: 'postgres:13.1-alpine'
+    image: 'book-store-db:latest'
+    build:
+      context: Librarian/db/.
     container_name: db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=newPassword
       - POSTGRES_DB=book_store
+    ports:
+      - "5432:5432"
 
   ui:
     image: 'book-store-ui:latest'
