@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  backend:
+    image: 'book-store-backend:latest'
+    build:
+      context: .
+    container_name: backend
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/book_store
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=newPassword
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=newPassword
+      - POSTGRES_DB=book_store
+
+  ui:
+    image: 'book-store-ui:latest'
+    build:
+      context: Librarian/frontend/lab2-librarian/.
+    container_name: ui
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"

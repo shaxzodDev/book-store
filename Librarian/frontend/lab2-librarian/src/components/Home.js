@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import styles from '../sevi/public/assets/css/theme.css';
-// import styleRtl from '../sevi/public/assets/css/theme-rtl.css';
 import heroSection from '../sevi/public/assets/img/illustrations/hero-section.png';
 import heroBg from '../sevi/public/assets/img/illustrations/hero-bg.png';
 import search from '../sevi/public/assets/img/illustrations/search.png';
@@ -8,14 +7,8 @@ import BeginSection from "./BeginSection";
 import Libraries from "./Libraries";
 import Books from "./Books";
 import BottomContainer from "./BottomContainer";
-import {Route} from "react-router-dom";
 import CategoryRepository from "../repo/CategoryRepository";
 import BookRepository from "../repo/BookRepository";
-import NamesContainer from "./NamesContainer";
-import {render} from "@testing-library/react";
-import BookItems from "./BookItems";
-import ReactSearchAutocomplete from 'react-search-autocomplete';
-import Carousel from "./Carousel";
 
 const Home = (props) => {
 

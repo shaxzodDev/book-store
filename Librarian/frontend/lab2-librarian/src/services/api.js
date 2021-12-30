@@ -3,7 +3,7 @@ import get from "lodash/get";
 import storage from './storage';
 
 const request = axios.create({
-    baseURL: "http://localhost:9595"
+    baseURL: "http://backend:9595"
 });
 
 request.defaults.params = {};
